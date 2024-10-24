@@ -1,0 +1,16 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+*.sqlite3
+media/
+
+# Environnements virtuels
+env/
+venv/
+.venv/
+
+# Secrets Django 
+.env

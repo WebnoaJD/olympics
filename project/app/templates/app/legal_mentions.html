@@ -1,0 +1,37 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block main %}
+
+<main class="page-title legalpage orderpage container mt-5">
+    <h2>{{ title }}</h2>
+    <section>
+        {% for legal in legal %}
+            <article class='contact-address'>
+                <h3>Éditeur du site</h3>
+                <div>
+                    <p>{{ legal.editor_name }}</p>
+                    <p>{{ legal.utilisation }}</p>
+                </div>
+            </article>
+                <h3>Hébergement du site</h3>
+                <div>
+                    <p>{{ legal.host_name }}</p>
+                    <p>{{ legal.host_address }}
+                    <p>{{ legal.host_website }}</p>
+                    <p>{{ legal.host_complement }}</p>
+                </div>
+            </article>
+            </article>
+            <h3>Propriété intellectuelle</h3>
+            <p>{{ legal.text_1 }}</p>
+            <h3>Données personnelles</h3>
+            <p>{{ legal.text_2 }}</p>
+            <h3>Loi applicable</h3>
+            <p>{{ legal.text_3 }}</p>
+            <h3>Modification des mentions légales</h3>
+            <p>{{ legal.text_4 }}</p>
+        {% endfor %}
+    </section>
+</main>
+
+{% endblock %}

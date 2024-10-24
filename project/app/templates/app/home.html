@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block main %}
+
+<main class="page-title homepage container mt-5">
+    <section class="row">
+    {% include 'app/carousel.html' %}
+    </section>
+    <h2>Épreuves</h2>
+    <section class="row">
+    {% include 'app/events.html' %}
+    </section>
+</main>
+
+{% endblock %}
+

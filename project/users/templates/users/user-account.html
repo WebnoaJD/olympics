@@ -1,0 +1,36 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+    <main class="page-title orderpage container mt-5">
+        <h2>Bienvenue {{ user.first_name }} {{ user.last_name }}</h2>
+        <h3>{{ title }}</h3>
+        {% if orders %}
+            <div class="orders-wrapper">
+                <div class="card mb-3">
+                    {% for order in orders %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ order.event_sport}}</h5>
+                            <h5 class="card-title">{{ order.event_name }}</h5>
+                            <h5 class="card-title">{{ order.offer_name }}</h5>
+                            <p class="card-text">{{ order.event_date }}</p>
+                            <p class="card-text">{{ order.event_location }}</p>
+                            <p class="card-text">Nombre de ticket(s) : {{ order.ticket_nb }}</p>
+                            <p class="card-text">Montant réglé : {{ order.price|floatformat:2 }} €</p>
+                            <p class="card-text">Date de la transaction : {{ order.date }}</p>
+                            {% if order.QR_code %}
+                                <img src="{{ order.QR_code.url }}" alt="QR Code" class="img-fluid">
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                Vous n'avez réalisé aucun achat.
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}
+

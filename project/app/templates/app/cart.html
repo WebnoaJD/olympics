@@ -1,0 +1,51 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block main %}
+<main class="page-title container mt-5">
+    <h2>{{ title }}</h2>
+    <div class="cart">
+        <div class="cart-articles">
+            <div id="cart_items"></div>
+            {% if cart %}
+                {% for item in cart %}
+                <article class="cart-article card event-card text-center">
+                    <div class="event-details">
+                        <p class="event-info main-info">{{ item.event_sport }}, {{ item.event_complete_name }}</p>
+                        <p class="event-info">{{ item.event_location }}, {{ item.event_time }}</p>
+                        <p class="event-info">{{ item.offer_name }}</p>
+                        <p class="event-info">{{ item.offer_ticket_nb }} {{ item.offer_ticket_nb|pluralize:"billet,billets" }}</p>
+                        <p class="event-info main-info">{{ item.offer_price }} €</p>
+                    </div>
+                    <div class="remove">
+                        <form action="{% url 'remove_from_cart' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="item_index" value="{{ forloop.counter0 }}">
+                            <button type="submit" class="suppr-btn btn"><i class="fa-solid fa-trash"></i> Supprimer </button>
+                        </form>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            <div class="total-price">Total à régler : <span id="total-price">{{ total_price }}€</span></div>
+            <div class=" cart-buttons col-md-4 text-center">
+                {% if user.is_authenticated %} 
+                    <a href="{% url 'payment_view' %}" class="button">Procéder au paiement</a>
+                {% else %}
+                    <a href="{% url 'signup_view' %}" class="button" alt="S'identifier">S'identifier</a>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>Votre panier est vide.</p>
+        {% endif %}
+        </div>
+        <div class="add-offer text-center mt-8">
+            <a href="{% url 'offers_view' %}" alt="Retour aux offres">Ajouter une offre
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+

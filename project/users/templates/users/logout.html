@@ -1,0 +1,9 @@
+{% extends "app/base.html" %}
+{% block main %}
+    <h2>Vous avez été déconnecté</h2>
+    <div class="border-top pt-3"  style="min-height:65vh;">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">S'identifier</a>
+        </small>
+    </div>
+{% endblock main %}

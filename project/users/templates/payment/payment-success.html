@@ -1,0 +1,8 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block main %}
+<main class="page-title payment-issue-page container mt-5">
+    <h3>Achat réalisé avec succès</h3>
+    <a class="button" href="{% url 'user_account_view' %}">Accéder à mes billets</a>
+</main>
+{% endblock %}
