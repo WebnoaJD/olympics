@@ -23,8 +23,9 @@
 
 ## Fonctionnalités
 
-	Sélectionner une épreuve et une offre associée
- 	L'ajouter au panier
+	Carousel de photos et indications sur les JO
+ 	Sélection d'une épreuve et une offre associée
+ 	Ajout au panier
   	Créer un compte utilisateur (e-mail + mot de passe)
    	Passer un contrôle (factice) d'identité (mock d'une application comme Jumio)
     	Recevoir un lien d'activation par mail
